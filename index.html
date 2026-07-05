@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Banchian service - โซลูชันแอร์คอนดิชั่นพรีเมียมประหยัดพลังงาน เทคโนโลยีอัจฉริยะ ปลอดภัย และเชื่อถือได้">
+    <meta name="keywords" content="แอร์, แอร์คอนดิชั่น, ระบายความเย็น, ประหยัดพลังงาน, บ้านอัจฉริยะ, WiFi">
+    <meta name="author" content="Banchian service">
+    <meta property="og:title" content="Banchian service - เย็นกว่า สมาร์ทกว่า ประหยัดกว่า">
+    <meta property="og:description" content="โซลูชันแอร์คอนดิชั่นพรีเมียมพร้อมเทคโนโลยีอัจฉริยะและประหยัดพลังงาน">
+    <meta property="og:type" content="website">
+    <title>Banchian service - โซลูชันแอร์คอนดิชั่นพรีเมียม</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html" class="logo-text">Banchian Service</a>
+            </div>
+            <ul class="nav-menu">
+                <!-- <li><a href="#features" class="nav-link">ฟีเจอร์</a></li>
+                <li><a href="#reviews" class="nav-link">รีวิว</a></li> -->
+                <li><a href="#products" class="nav-link">สินค้า</a></li>
+                <li><a href="#promotions" class="nav-link">โปรโมชั่น</a></li>
+                <li><a href="#contact" class="nav-link">ติดต่อ</a></li>
+                <li><a href="history.html" class="nav-link">ประวัติ</a></li>
+                <li><button onclick="openCart()" class="nav-link"
+                        style="background:none;border:none;cursor:pointer;padding:0;font-size:inherit;color:inherit;">🛒</button>
+                </li>
+            </ul>
+            <button class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Banchian Service</h1>
+            <p class="hero-subtitle">ปรับปรุงความสะดวกสบายกับแอร์คอนดิชั่นพรีเมียมที่มีการปรับอุณหภูมิด้วย AI
+                และเทคโนโลยีประหยัดพลังงาน อยู่เย็นสบายพร้อมลดค่าไฟฟ้า</p>
+            <div class="hero-buttons">
+                <a href="#products" class="btn btn-primary">ช้อปเลย</a>
+                <a href="#contact" class="btn btn-secondary">ขอใบเสนอราคา</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            
+        </div>
+    </section>
+
+    <!-- Featured Products Section -->
+    <section id="products" class="products-section">
+        <div class="section-header">
+            <h2>สินค้าแนะนำ</h2>
+            <p>ค้นหาแอร์คอนดิชั่นพรีเมียมที่ออกแบบมาเพื่อความสะดวกสบายสูงสุด</p>
+        </div>
+
+        <!-- Filters -->
+        <div class="filters">
+            <div class="filter-group">
+                <label for="brand-filter">ยี่ห้อ</label>
+                <select id="brand-filter">
+                    <option value="">ทั้งหมด</option>
+                    <option value="Panasonic">Panasonic</option>
+                    <option value="smart">ซีรี่ส์อัจฉริยะ</option>
+                    <option value="eco">ซีรี่ส์ประหยัด</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="btu-filter">ช่วง BTU</label>
+                <select id="btu-filter">
+                    <option value="">ทั้งหมด</option>
+                    <option value="5000-8000">5,000 - 8,000 BTU</option>
+                    <option value="8000-12000">8,000 - 12,000 BTU</option>
+                    <option value="12000-18000">12,000 - 18,000 BTU</option>
+                    <option value="18000+">18,000+ BTU</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="room-filter">ขนาดห้อง</label>
+                <select id="room-filter">
+                    <option value="">ทั้งหมด</option>
+                    <option value="small">เล็ก (100-200 ตร.ม.)</option>
+                    <option value="medium">กลาง (200-400 ตร.ม.)</option>
+                    <option value="large">ใหญ่ (400-600 ตร.ม.)</option>
+                    <option value="extra-large">ใหญ่พิเศษ (600+ ตร.ม.)</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card" data-brand="Panasonic" data-btu="12000" data-room="medium" data-product-id="1" data-stock="15">
+                <div class="product-image">
+                    <img src="images/air1.png" alt="Air Conditioner" class="product-img">
+                    <div class="stock-badge">✓ มีสต็อก</div>
+                </div>
+                <div class="product-info">
+                    <h3>Panasonic</h3>
+                    <div class="product-specs">
+                        <span class="spec">12,000 BTU</span>
+                        <span class="spec">⭐ A+ ประหยัด</span>
+                    </div>
+                    <p class="product-description">ระบบทำความสะอาดตัวเองอัตโนมัติ
+                        จัดเต็มด้วยประสิทธิภาพความทนทานในการใช้งาน ใช้งานง่ายดูแลรักษาก็ง่าย ประหยัดไฟเบอร์ 5</p>
+                    <div class="stock-info">คงเหลือ: <span class="stock-count">15</span> ชิ้น</div>
+                    <div class="product-footer">
+                        <span class="price">฿9,990</span>
+                        <button class="add-cart">เพิ่มลงตะกร้า</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card" data-brand="smart" data-btu="18000" data-room="large" data-product-id="2" data-stock="8">
+                <div class="product-image">
+                    <img src="images/tcl.png" alt="Air Conditioner" class="product-img">
+                    <div class="stock-badge">✓ มีสต็อก</div>
+                </div>
+                <div class="product-info">
+                    <h3>TCL รุ่นธรรมดา</h3>
+                    <div class="product-specs">
+                        <span class="spec">9,000 BTU</span>
+                        <span class="spec">⭐ A+ ประหยัด</span>
+                    </div>
+                    <p class="product-description">พื้นที่ 11-14 (ตร.เมตร)
+                        <br>รับประกันคอมเพรซเซอร์ นานสูงสุด 10 ปี</p>
+                    <div class="stock-info">คงเหลือ: <span class="stock-count">8</span> ชิ้น</div>
+                    <div class="product-footer">
+                        <span class="price">฿12,900 พร้อมติดตั้ง</span>
+                        <button class="add-cart">เพิ่มลงตะกร้า</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card" data-brand="eco" data-btu="8000" data-room="small" data-product-id="3" data-stock="25">
+                <div class="product-image">
+                    <div class="product-placeholder">ซีรี่ส์ประหยัด</div>
+                    <div class="stock-badge">✓ มีสต็อก</div>
+                </div>
+                <div class="product-info">
+                    <h3>เบนเชียน อีโค คอมแพคท์</h3>
+                    <div class="product-specs">
+                        <span class="spec">8,000 BTU</span>
+                        <span class="spec">⭐ A++ ประหยัด</span>
+                    </div>
+                    <p class="product-description">แอร์ประหยัดพลังงาน สำหรับห้องเล็ก</p>
+                    <div class="stock-info">คงเหลือ: <span class="stock-count">25</span> ชิ้น</div>
+                    <div class="product-footer">
+                        <span class="price">฿5,990</span>
+                        <button class="add-cart">เพิ่มลงตะกร้า</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card" data-brand="premium" data-btu="18000" data-room="large" data-product-id="4" data-stock="5">
+                <div class="product-image">
+                    <div class="product-placeholder">ซีรี่ส์พรีเมียม</div>
+                    <div class="stock-badge out-of-stock">⚠️ เกือบหมด</div>
+                </div>
+                <div class="product-info">
+                    <h3>เบนเชียน เอลีท</h3>
+                    <div class="product-specs">
+                        <span class="spec">18,000 BTU</span>
+                        <span class="spec">⭐ A+ ประหยัด</span>
+                    </div>
+                    <p class="product-description">แอร์พรีเมียมพร้อมระบบกรองอากาศขั้นสูง</p>
+                    <div class="stock-info">คงเหลือ: <span class="stock-count">5</span> ชิ้น</div>
+                    <div class="product-footer">
+                        <span class="price">฿16,990</span>
+                        <button class="add-cart">เพิ่มลงตะกร้า</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product-card" data-brand="smart" data-btu="12000" data-room="medium" data-product-id="5" data-stock="12">
+                <div class="product-image">
+                    <div class="product-placeholder">ซีรี่ส์อัจฉริยะ</div>
+                    <div class="stock-badge">✓ มีสต็อก</div>
+                </div>
+                <div class="product-info">
+                    <h3>เบนเชียน วอยซ์ คอนโทรล</h3>
+                    <div class="product-specs">
+                        <span class="spec">12,000 BTU</span>
+                        <span class="spec">⭐ A ประหยัด</span>
+                    </div>
+                    <p class="product-description">ควบคุมด้วยเสียงและแอปพ์มือถือ</p>
+                    <div class="stock-info">คงเหลือ: <span class="stock-count">12</span> ชิ้น</div>
+                    <div class="product-footer">
+                        <span class="price">฿11,990</span>
+                        <button class="add-cart">เพิ่มลงตะกร้า</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="product-card" data-brand="eco" data-btu="18000" data-room="large" data-product-id="6" data-stock="0">
+                <div class="product-image">
+                    <div class="product-placeholder">ซีรี่ส์ประหยัด</div>
+                    <div class="stock-badge out-of-stock">❌ สินค้าหมด</div>
+                </div>
+                <div class="product-info">
+                    <h3>เบนเชียน โปรเฟชั่นแนล</h3>
+                    <div class="product-specs">
+                        <span class="spec">18,000 BTU</span>
+                        <span class="spec">⭐ A++ ประหยัด</span>
+                    </div>
+                    <p class="product-description">แอร์ประหยัดระดับอุตสาหกรรมสำหรับห้องใหญ่</p>
+                    <div class="stock-info">คงเหลือ: <span class="stock-count">0</span> ชิ้น</div>
+                    <div class="product-footer">
+                        <span class="price">฿12,990</span>
+                        <button class="add-cart">เพิ่มลงตะกร้า</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-us">
+        <div class="section-header">
+            <h2>ทำไมต้องเลือก Banchian service</h2>
+            <p>เราให้บริการความเป็นเลิศในทุกด้านของประสบการณ์ระบายความเย็น</p>
+        </div>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon">🔧</div>
+                <h3>การติดตั้งแบบมืออาชีพ</h3>
+                <p>ช่างเทคนิคผู้เชี่ยวชาญมั่นใจได้ว่าการติดตั้งได้ถูกต้อง</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">♻️</div>
+                <h3>ประหยัดพลังงาน</h3>
+                <p>ลดค่าไฟฟ้าได้ถึง 40% ด้วยเทคโนโลยีระบายความเย็นขั้นสูง</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">🚚</div>
+                <h3>จัดส่งรวดเร็ว</h3>
+                <p>จัดส่งฟรีทั่วประเทศสำหรับสินค้าที่มีราคาเกิน 500 บาท</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">🛡️</div>
+                <h3>รับประกัน 5 ปี</h3>
+                <p>ความคุ้มครองครบวงจรและสนับสนุนลูกค้า 24/7</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Smart Features Section -->
+    <!-- <section id="features" class="smart-features">
+        <div class="section-header">
+            <h2>ฟีเจอร์อัจฉริยะที่ต่างออกไป</h2>
+            <p>สัมผัสอนาคตของแอร์คอนดิชั่น</p>
+        </div>
+        <div class="features-container">
+            <div class="feature">
+                <div class="feature-icon">📱</div>
+                <h3>ควบคุมผ่าน Wi-Fi</h3>
+                <p>ควบคุมแอร์ของคุณจากที่ไหนก็ได้ด้วยแอปพ์มือถือของเรา ปรับอุณหภูมิ ตั้งเวลา ติดตามการใช้พลังงาน</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🤖</div>
+                <h3>ปรับอุณหภูมิด้วย AI</h3>
+                <p>ระบบการเรียนรู้ของเครื่องเรียนรู้ความชอบของคุณและปรับระบายความเย็นอัตโนมัติ</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">⚡</div>
+                <h3>ติดตามการใช้พลังงาน</h3>
+                <p>ตรวจสอบรูปแบบการใช้พลังงานและได้รับคำแนะนำเพื่อลดการใช้และค่าใช้จ่าย</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🎤</div>
+                <h3>รองรับผู้ช่วยเสียง</h3>
+                <p>รวมกับ Alexa Google Assistant และ Siri เพื่อการควบคุมแบบไม่ต้องใช้มือ</p>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Customer Reviews Section -->
+    <!-- <section id="reviews" class="reviews-section">
+        <div class="section-header">
+            <h2>ลูกค้าของเราพูดอะไร</h2>
+            <p>ร่วมกับลูกค้าหลายพันคนที่สนใจแอร์พรีเมียม</p>
+        </div>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                <p class="review-text">"แอร์อัจฉริยะ AI-18 ของเบนเชียนเปลี่ยนความสะดวกสบายบ้านของเรา ค่าไฟลดลง 35% และการควบคุมผ่าน Wi-Fi สะดวกมาก ขอแนะนำอย่างยิ่ง!"</p>
+                <p class="review-author">— สารา จอห์นสัน, กรุงเทพ</p>
+            </div>
+            <div class="review-card">
+                <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                <p class="review-text">"การติดตั้งแบบมืออาชีพสวยงามและแอร์เงียบมากแม้จะใช้งาน คุ้มค่าจริงๆ บริการลูกค้าต้นเรือ!"</p>
+                <p class="review-author">— ไมเคิล เฉิน, พัทยา</p>
+            </div>
+            <div class="review-card">
+                <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                <p class="review-text">"ตัดสินใจดีที่สุดของเรา ระบบ EcoCool ประหยัดพลังงานอย่างเหลือเชื่อ และรับประกันให้ความสึกสันติสุขมาก"</p>
+                <p class="review-author">— เอมม่า โรดริเกซ, เชียงใหม่</p>
+            </div>
+            <div class="review-card">
+                <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                <p class="review-text">"เกินความคาดหวังทั้งหมด การปรับอุณหภูมิด้วย AI นั่นวิเศษ - มันเรียนรู้เมื่อไหร่ที่ผมชอบให้แอร์เย็นลง การลงทุนที่สมบูรณ์แบบ"</p>
+                <p class="review-author">— เดวิด วิลเลียมส์, หัวหิน</p>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Promotions Section -->
+    <section id="promotions" class="promotions-section">
+        <div class="promotion-card promotion-summer">
+            <h3>ลดราคาฤดูร้อน</h3>
+            <p class="promo-text">ลดได้ถึง 25% สำหรับรุ่นที่เลือก</p>
+            <p class="promo-expires">โปรโมชั่นจำกัด - สิ้นสุดวันที่ 30 มิถุนายน</p>
+            <button class="btn btn-primary">ช้อปเลย</button>
+        </div>
+        <div class="promotion-card promotion-bundle">
+            <h3>ส่วนลดรวม</h3>
+            <p class="promo-text">ซื้อ 2 เครื่อง ลดทั้งหมด 20%</p>
+            <p class="promo-expires">ใช้ได้จนถึงมิถุนายน 2026</p>
+            <button class="btn btn-primary">ดูแพ็คเกจ</button>
+        </div>
+        <div class="promotion-card promotion-financing">
+            <h3>สินเชื่อพร้อมใจ</h3>
+            <p class="promo-text">ดอกเบี้ย 0% เป็นเวลา 24 เดือนสำหรับซื้อเกิน 600 บาท</p>
+            <p class="promo-expires">ต้องอนุมัติสินเชื่อก่อน</p>
+            <button class="btn btn-primary">เรียนรู้เพิ่มเติม</button>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="section-header">
+            <h2>ติดต่อเรา</h2>
+            <p>มีคำถาม? เราพร้อมช่วยเหลือ!</p>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h4>📞 โทรศัพท์</h4>
+                    <p><a href="tel:084-405-9293">084-405-9293</a></p>
+                </div>
+                <div class="contact-item">
+                    <h4>✉️ อีเมล</h4>
+                    <p><a href="mailto:info@banchianservice.com">info@banchianservice.com</a></p>
+                </div>
+                <div class="contact-item">
+                    <h4>📍 ที่อยู่</h4>
+                    <p>41ม.1, Ban Chiang, Nong Han District, Udon Thani 41320</p>
+                </div>
+                <div class="contact-item">
+                    <h4>🕐 เวลาเปิด</h4>
+                    <p>จ.-ศ. 9.00 - 18.00<br>ส.-อา. 10.00 - 16.00</p>
+                </div>
+            </div>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">ชื่อ-นามสกุล</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">ที่อยู่อีเมล</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">เบอร์โทรศัพท์</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="message">ข้อความ</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">ส่งข้อความ</button>
+            </form>
+            <div class="map-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d800.3460620850778!2d103.24203354200307!3d17.406559489402767!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31234318b3ac5445%3A0xf558181fd86a62af!2z4Lia4LmJ4Liy4LiZ4LmA4LiK4Li14Lii4LiH4LmA4LiL4Lit4Lij4LmM4Lin4Li04Liq!5e0!3m2!1sen!2sth!4v1780504012031!5m2!1sen!2sth"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Banchian Service</h4>
+                    <p>โซลูชันแอร์คอนดิชั่นพรีเมียมสำหรับการใช้ชีวิตสมัยใหม่</p>
+                </div>
+                <div class="footer-section">
+                    <h4>ลิงค์ด่วน</h4>
+                    <ul>
+                        <li><a href="#products">สินค้า</a></li>
+                        <li><a href="#features">ฟีเจอร์</a></li>
+                        <li><a href="#reviews">รีวิว</a></li>
+                        <li><a href="#contact">ติดต่อ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>ติดตามเรา</h4>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/suphi.chay.thanta.ha" class="social-link">Facebook</a>
+                        <a href="#" class="social-link">Twitter</a>
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="#" class="social-link">LinkedIn</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>กฎหมาย</h4>
+                    <ul>
+                        <li><a href="#privacy">นโยบายความเป็นส่วนตัว</a></li>
+                        <li><a href="#terms">เงื่อนไขการใช้บริการ</a></li>
+                        <li><a href="#warranty">รับประกัน</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Banchian service สงวนสิทธิ์ทั้งหมด ออกแบบเพื่อประสบการณ์ระบายความเย็นพรีเมียม</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+    <!-- Shopping Cart Modal -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🛒 ตะกร้าของคุณ</h2>
+                <button class="close-modal" onclick="closeCart()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="cartItems" class="cart-items"></div>
+                <div id="emptyCart" class="empty-cart">
+                    <p>ตะกร้างของคุณว่างเปล่า 😢</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="cart-summary">
+                    <p>รวมทั้งหมด: <strong id="totalPrice">฿0</strong></p>
+                </div>
+                <button onclick="clearCart()" class="btn btn-secondary">ล้างตะกร้า</button>
+                <button onclick="proceedToCheckout()" class="btn btn-primary">ดำเนินการชำระเงิน</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div id="checkoutModal" class="modal">
+        <div class="modal-content modal-checkout">
+            <div class="modal-header">
+                <h2>💳 ชำระเงิน</h2>
+                <button class="close-modal" onclick="closeCheckout()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="checkoutForm">
+                    <h3>ข้อมูลผู้สั่งซื้อ</h3>
+                    <div class="form-group">
+                        <label>ชื่อ-นามสกุล *</label>
+                        <input type="text" id="customerName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>อีเมล *</label>
+                        <input type="email" id="customerEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label>เบอร์โทรศัพท์ *</label>
+                        <input type="tel" id="customerPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label>ที่อยู่ *</label>
+                        <textarea id="customerAddress" rows="3" required></textarea>
+                    </div>
+
+                    <h3>วิธีชำระเงิน</h3>
+                    <div class="payment-methods">
+                        <label>
+                            <input type="radio" name="paymentMethod" value="bank" checked>
+                            🏦 โอนเงินธนาคาร
+                        </label>
+                        <label>
+                            <input type="radio" name="paymentMethod" value="creditcard">
+                            💳 บัตรเครดิต
+                        </label>
+                        <label>
+                            <input type="radio" name="paymentMethod" value="promptpay">
+                            📱 PromptPay
+                        </label>
+                    </div>
+
+                    <div id="bankInfo" class="payment-info">
+                        <h4>ข้อมูลการโอนเงิน:</h4>
+                        <p>🏦 ธนาคาร: ธนาคารกรุงเทพ</p>
+                        <p>👤 ชื่อบัญชี: Banchian Service</p>
+                        <p>🔢 เลขบัญชี: 123-456-7890</p>
+                        <p>⏰ โปรดโอนเงินภายใน 24 ชั่วโมง</p>
+                    </div>
+
+                    <div id="summaryInfo" class="order-summary">
+                        <h3>สรุปการสั่งซื้อ</h3>
+                        <div id="checkoutSummary"></div>
+                        <p class="total-amount">รวมทั้งหมด: <strong id="checkoutTotal">฿0</strong></p>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary"
+                        style="width: 100%; margin-top: 1rem;">ยืนยันการสั่งซื้อ</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

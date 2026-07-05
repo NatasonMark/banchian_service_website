@@ -1,0 +1,948 @@
+/* =========================================
+   History Page - Premium Styles
+   ========================================= */
+
+/* ---- Font ---- */
+.hist-hero *,
+.hist-stats *,
+.hist-timeline-section *,
+.hist-values-section *,
+.hist-founders-section *,
+.hist-cta-section * {
+    font-family: 'Noto Sans Thai', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* ---- Hero Section ---- */
+.hist-hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #0a0e1a 0%, #0d1b2a 30%, #1b2838 60%, #0a192f 100%);
+    overflow: hidden;
+    margin-top: 0;
+    padding-top: 60px;
+}
+
+.hist-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at 20% 50%, rgba(0, 153, 204, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 80%, rgba(102, 126, 234, 0.08) 0%, transparent 50%);
+    z-index: 1;
+}
+
+.hist-hero-particles {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.hist-particle {
+    position: absolute;
+    background: rgba(0, 212, 255, 0.4);
+    border-radius: 50%;
+    animation: histParticleFloat linear infinite;
+    pointer-events: none;
+}
+
+@keyframes histParticleFloat {
+    0% {
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) translateX(50px) scale(0.3);
+        opacity: 0;
+    }
+}
+
+.hist-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 800px;
+    padding: 2rem;
+    animation: histFadeInUp 1s ease-out;
+}
+
+.hist-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1.25rem;
+    background: rgba(0, 153, 204, 0.15);
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    border-radius: 50px;
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    backdrop-filter: blur(10px);
+}
+
+.hist-badge-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--secondary-color);
+    border-radius: 50%;
+    animation: histPulse 2s ease-in-out infinite;
+}
+
+@keyframes histPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.5); }
+}
+
+.hist-hero-title {
+    margin-bottom: 1.5rem;
+}
+
+.hist-title-line {
+    display: block;
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.2;
+    letter-spacing: -1px;
+}
+
+.hist-title-gradient {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color), #667eea);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% 200%;
+    animation: histGradientShift 4s ease-in-out infinite;
+}
+
+@keyframes histGradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.hist-hero-subtitle {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.8;
+    max-width: 600px;
+    margin: 0 auto 3rem;
+}
+
+.hist-hero-scroll {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.8rem;
+    animation: histBounce 2s ease-in-out infinite;
+}
+
+.hist-scroll-mouse {
+    width: 26px;
+    height: 42px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    padding-top: 8px;
+}
+
+.hist-scroll-wheel {
+    width: 4px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 2px;
+    animation: histScrollWheel 2s ease-in-out infinite;
+}
+
+@keyframes histScrollWheel {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(12px); opacity: 0; }
+}
+
+@keyframes histBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+}
+
+/* ---- Stats Section ---- */
+.hist-stats {
+    padding: 4rem 2rem;
+    background: linear-gradient(180deg, #0a192f 0%, #0d1b2a 100%);
+    position: relative;
+}
+
+.hist-stats::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.3), transparent);
+}
+
+.hist-stats-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+.hist-stat-item {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 20px;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.hist-stat-item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0, 153, 204, 0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.hist-stat-item:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0, 212, 255, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.hist-stat-item:hover::before {
+    opacity: 1;
+}
+
+.hist-stat-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+    position: relative;
+    z-index: 1;
+}
+
+.hist-stat-number {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--secondary-color);
+    line-height: 1;
+    display: inline;
+    position: relative;
+    z-index: 1;
+}
+
+.hist-stat-suffix {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--secondary-color);
+    display: inline;
+    position: relative;
+    z-index: 1;
+}
+
+.hist-stat-label {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 0.5rem;
+    font-weight: 400;
+    position: relative;
+    z-index: 1;
+}
+
+/* ---- Section Header ---- */
+.hist-section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.hist-section-tag {
+    display: inline-block;
+    padding: 0.4rem 1.2rem;
+    background: linear-gradient(135deg, rgba(0, 153, 204, 0.1), rgba(0, 212, 255, 0.1));
+    border: 1px solid rgba(0, 153, 204, 0.2);
+    border-radius: 50px;
+    color: var(--primary-color);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
+}
+
+.hist-section-header h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--dark-text);
+    margin-bottom: 0.75rem;
+    letter-spacing: -1px;
+}
+
+.hist-section-header p {
+    font-size: 1.1rem;
+    color: var(--light-text);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* ---- Timeline Section ---- */
+.hist-timeline-section {
+    padding: 6rem 2rem;
+    background: var(--bg-white);
+    position: relative;
+    overflow: hidden;
+}
+
+.hist-timeline-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -200px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(0, 153, 204, 0.04) 0%, transparent 70%);
+    border-radius: 50%;
+}
+
+.hist-timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.hist-timeline-line {
+    position: absolute;
+    width: 3px;
+    background: linear-gradient(180deg, var(--primary-color), var(--secondary-color), #667eea);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 0%;
+    transition: height 0.1s linear;
+    border-radius: 3px;
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+}
+
+.hist-timeline-item {
+    padding: 1.5rem 0;
+    position: relative;
+    width: 50%;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hist-timeline-item.hist-revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hist-timeline-item.hist-left {
+    padding-right: 3.5rem;
+    text-align: right;
+}
+
+.hist-timeline-item.hist-right {
+    left: 50%;
+    padding-left: 3.5rem;
+    text-align: left;
+}
+
+.hist-timeline-dot {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 50%;
+    top: 2.5rem;
+    z-index: 2;
+    box-shadow: 0 0 0 4px rgba(0, 153, 204, 0.2);
+}
+
+.hist-timeline-item.hist-left .hist-timeline-dot {
+    right: -9px;
+}
+
+.hist-timeline-item.hist-right .hist-timeline-dot {
+    left: -9px;
+}
+
+.hist-dot-ping {
+    position: absolute;
+    inset: -4px;
+    border: 2px solid var(--secondary-color);
+    border-radius: 50%;
+    animation: histDotPing 3s ease-in-out infinite;
+}
+
+.hist-dot-active {
+    box-shadow: 0 0 0 4px rgba(0, 212, 255, 0.3), 0 0 20px rgba(0, 212, 255, 0.2);
+}
+
+.hist-ping-active {
+    animation: histDotPing 1.5s ease-in-out infinite;
+}
+
+@keyframes histDotPing {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.8); opacity: 0; }
+}
+
+.hist-timeline-card {
+    background: var(--bg-white);
+    padding: 2rem;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.hist-timeline-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+}
+
+.hist-timeline-card:hover {
+    border-color: rgba(0, 153, 204, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    transform: translateY(-3px);
+}
+
+.hist-timeline-card:hover::before {
+    transform: scaleX(1);
+}
+
+.hist-card-active {
+    border-color: rgba(0, 212, 255, 0.3);
+    background: linear-gradient(135deg, rgba(0, 153, 204, 0.03), rgba(0, 212, 255, 0.03));
+}
+
+.hist-card-year {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.75rem;
+}
+
+.hist-card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.hist-timeline-card h3 {
+    font-size: 1.3rem;
+    color: var(--dark-text);
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+}
+
+.hist-timeline-card p {
+    font-size: 0.95rem;
+    color: var(--light-text);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+.hist-card-tag {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    background: rgba(0, 153, 204, 0.08);
+    color: var(--primary-color);
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.hist-tag-active {
+    background: rgba(0, 212, 255, 0.1);
+    color: var(--secondary-color);
+    animation: histPulse 2s ease-in-out infinite;
+}
+
+/* ---- Values Section ---- */
+.hist-values-section {
+    padding: 6rem 2rem;
+    background: var(--bg-light);
+}
+
+.hist-values-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+.hist-value-card {
+    background: var(--bg-white);
+    padding: 2.5rem 1.5rem;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+.hist-value-card.hist-revealed {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.hist-value-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+}
+
+.hist-value-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(0, 153, 204, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.hist-value-card:hover::after {
+    transform: scaleX(1);
+}
+
+.hist-value-icon-wrap {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    background: linear-gradient(135deg, rgba(0, 153, 204, 0.08), rgba(0, 212, 255, 0.08));
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease;
+}
+
+.hist-value-card:hover .hist-value-icon-wrap {
+    transform: scale(1.1) rotate(5deg);
+    background: linear-gradient(135deg, rgba(0, 153, 204, 0.15), rgba(0, 212, 255, 0.15));
+}
+
+.hist-value-icon {
+    font-size: 2.5rem;
+}
+
+.hist-value-card h3 {
+    font-size: 1.2rem;
+    color: var(--dark-text);
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+}
+
+.hist-value-card p {
+    font-size: 0.9rem;
+    color: var(--light-text);
+    line-height: 1.7;
+}
+
+/* ---- Founders Section ---- */
+.hist-founders-section {
+    padding: 6rem 2rem;
+    background: var(--bg-white);
+}
+
+.hist-founders-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    justify-items: center;
+}
+
+.hist-founder-card {
+    background: var(--bg-white);
+    border-radius: 24px;
+    border: 1px solid var(--border-color);
+    padding: 3rem 2rem;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    max-width: 380px;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.hist-founder-card.hist-revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hist-founder-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: linear-gradient(135deg, rgba(0, 153, 204, 0.08), rgba(0, 212, 255, 0.05));
+    border-radius: 24px 24px 0 0;
+}
+
+.hist-founder-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(0, 153, 204, 0.3);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+}
+
+.hist-founder-img-wrap {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    margin: 0 auto 1.5rem;
+    z-index: 1;
+}
+
+.hist-founder-img-placeholder {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(0, 153, 204, 0.1), rgba(0, 212, 255, 0.1));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    border: 4px solid var(--bg-white);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 2;
+}
+
+.hist-founder-ring {
+    position: absolute;
+    inset: -6px;
+    border: 2px solid rgba(0, 153, 204, 0.2);
+    border-radius: 50%;
+    animation: histRingSpin 8s linear infinite;
+    border-top-color: var(--secondary-color);
+}
+
+@keyframes histRingSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.hist-founder-info {
+    position: relative;
+    z-index: 1;
+}
+
+.hist-founder-info h3 {
+    font-size: 1.3rem;
+    color: var(--dark-text);
+    margin-bottom: 0.3rem;
+    font-weight: 700;
+}
+
+.hist-founder-role {
+    display: inline-block;
+    padding: 0.3rem 1rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.hist-founder-bio {
+    font-size: 0.9rem;
+    color: var(--light-text);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+.hist-founder-social {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.hist-social-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: var(--bg-light);
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--light-text);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.hist-social-btn:hover {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border-color: transparent;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 153, 204, 0.3);
+}
+
+/* ---- CTA Section ---- */
+.hist-cta-section {
+    padding: 6rem 2rem;
+    background: linear-gradient(135deg, #0a0e1a 0%, #0d1b2a 50%, #1b2838 100%);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hist-cta-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(ellipse at center, rgba(0, 153, 204, 0.08) 0%, transparent 50%);
+    animation: histCTAGlow 6s ease-in-out infinite;
+}
+
+@keyframes histCTAGlow {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.hist-cta-content {
+    position: relative;
+    z-index: 1;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.hist-cta-content h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 1rem;
+    letter-spacing: -1px;
+}
+
+.hist-cta-content p {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 2rem;
+}
+
+.hist-cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.hist-cta-btn {
+    padding: 1rem 2rem;
+    border-radius: 14px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hist-cta-primary {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    box-shadow: 0 8px 24px rgba(0, 153, 204, 0.3);
+}
+
+.hist-cta-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(0, 153, 204, 0.5);
+}
+
+.hist-cta-primary svg {
+    transition: transform 0.3s ease;
+}
+
+.hist-cta-primary:hover svg {
+    transform: translateX(4px);
+}
+
+.hist-cta-secondary {
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+}
+
+.hist-cta-secondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-3px);
+}
+
+/* ---- Animations ---- */
+@keyframes histFadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 1024px) {
+    .hist-title-line {
+        font-size: 2.8rem;
+    }
+
+    .hist-stats-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hist-values-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .hist-title-line {
+        font-size: 2.2rem;
+    }
+
+    .hist-hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .hist-stat-number {
+        font-size: 2.2rem;
+    }
+
+    .hist-section-header h2 {
+        font-size: 2rem;
+    }
+
+    /* Timeline responsive */
+    .hist-timeline-line {
+        left: 20px;
+        transform: none;
+    }
+
+    .hist-timeline-item {
+        width: 100%;
+        padding-left: 3.5rem;
+        padding-right: 0;
+        text-align: left;
+    }
+
+    .hist-timeline-item.hist-left {
+        padding-right: 0;
+        text-align: left;
+    }
+
+    .hist-timeline-item.hist-right {
+        left: 0;
+    }
+
+    .hist-timeline-item.hist-left .hist-timeline-dot,
+    .hist-timeline-item.hist-right .hist-timeline-dot {
+        left: 11px;
+        right: auto;
+    }
+
+    .hist-values-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+    }
+
+    .hist-cta-content h2 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hist-hero {
+        min-height: 90vh;
+    }
+
+    .hist-title-line {
+        font-size: 1.8rem;
+    }
+
+    .hist-stats-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .hist-stat-item {
+        padding: 1.5rem 0.75rem;
+    }
+
+    .hist-stat-number {
+        font-size: 1.8rem;
+    }
+
+    .hist-stat-suffix {
+        font-size: 1.2rem;
+    }
+
+    .hist-timeline-card {
+        padding: 1.5rem;
+    }
+
+    .hist-card-icon {
+        font-size: 2rem;
+    }
+
+    .hist-founder-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .hist-cta-buttons {
+        flex-direction: column;
+    }
+
+    .hist-cta-btn {
+        justify-content: center;
+    }
+}

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Banchian Service</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background: #f5f5f7;
+        }
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .admin-header {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .admin-header h1 {
+            margin: 0;
+            color: #0099cc;
+        }
+        .orders-table {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+        th {
+            background: #0099cc;
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        tr:hover {
+            background: #f9f9f9;
+        }
+        .status-pending {
+            background: #fff3cd;
+            color: #856404;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-weight: 500;
+            font-size: 0.85rem;
+        }
+        .status-completed {
+            background: #d4edda;
+            color: #155724;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-weight: 500;
+            font-size: 0.85rem;
+        }
+        .btn-small {
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+        .btn-view {
+            background: #0099cc;
+            color: white;
+        }
+        .btn-complete {
+            background: #28a745;
+            color: white;
+        }
+        .btn-delete {
+            background: #dc3545;
+            color: white;
+        }
+        .btn-small:hover {
+            opacity: 0.8;
+            transform: translateY(-2px);
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0099cc;
+        }
+        .stat-label {
+            color: #666;
+            margin-top: 0.5rem;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1>📊 Admin Panel - Banchian Service</h1>
+            <p>จัดการคำสั่งซื้อและสถิติขาย</p>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number" id="totalOrders">0</div>
+                <div class="stat-label">คำสั่งซื้อทั้งหมด</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="pendingOrders">0</div>
+                <div class="stat-label">รอการชำระเงิน</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalRevenue">฿0</div>
+                <div class="stat-label">รายได้รวม</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="completedOrders">0</div>
+                <div class="stat-label">คำสั่งซื้อสำเร็จ</div>
+            </div>
+        </div>
+
+        <!-- Stock Management Section -->
+        <div class="admin-stock-section">
+            <h2>📦 จัดการสต็อกสินค้า</h2>
+            <div class="stock-management-grid" id="stockManagementGrid">
+                <!-- จะถูกสร้างโดย JavaScript -->
+            </div>
+        </div>
+
+        <div class="orders-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>หมายเลขคำสั่ง</th>
+                        <th>ชื่อผู้ซื้อ</th>
+                        <th>เบอร์โทร</th>
+                        <th>รวมทั้งหมด</th>
+                        <th>วิธีชำระ</th>
+                        <th>สถานะ</th>
+                        <th>วันที่</th>
+                        <th>การจัดการ</th>
+                    </tr>
+                </thead>
+                <tbody id="ordersBody">
+                    <tr>
+                        <td colspan="8" style="text-align: center; padding: 2rem;">
+                            ไม่มีคำสั่งซื้อ หรือเปิดจากคอมพิวเตอร์ที่สั่งซื้อ
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Order Detail Modal -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h2 id="orderModalTitle">รายละเอียดคำสั่งซื้อ</h2>
+                <button onclick="closeOrderModal()" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;">&times;</button>
+            </div>
+            <div id="orderDetails"></div>
+        </div>
+    </div>
+
+    <!-- Import shared JavaScript -->
+    <script src="script.js"></script>
+
+    <script>
+        // Load orders from localStorage
+        function loadOrders() {
+            const orders = JSON.parse(localStorage.getItem('banchian-orders')) || [];
+            const tbody = document.getElementById('ordersBody');
+
+            if (orders.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="8" style="text-align: center; padding: 2rem;">
+                            ไม่มีคำสั่งซื้อ (เปิดจากคอมพิวเตอร์ที่มีการสั่งซื้อเท่านั้น)
+                        </td>
+                    </tr>
+                `;
+                updateStats([]);
+                return;
+            }
+
+            let html = '';
+            orders.reverse().forEach(order => {
+                html += `
+                    <tr>
+                        <td><strong>${order.orderId}</strong></td>
+                        <td>${order.customerName}</td>
+                        <td>${order.customerPhone}</td>
+                        <td>฿${order.total.toLocaleString('th-TH')}</td>
+                        <td>${getPaymentMethodLabel(order.paymentMethod)}</td>
+                        <td>
+                            <span class="status-${order.status}">
+                                ${order.status === 'pending' ? '⏳ รอการชำระเงิน' : '✓ สำเร็จ'}
+                            </span>
+                        </td>
+                        <td>${order.createdAt}</td>
+                        <td>
+                            <button class="btn-small btn-view" onclick="viewOrder('${order.orderId}')">ดู</button>
+                            ${order.status === 'pending' ? `
+                                <button class="btn-small btn-complete" onclick="completeOrder('${order.orderId}')">สำเร็จ</button>
+                            ` : ''}
+                            <button class="btn-small btn-delete" onclick="deleteOrder('${order.orderId}')">ลบ</button>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            tbody.innerHTML = html;
+            updateStats(orders);
+        }
+
+        function getPaymentMethodLabel(method) {
+            const methods = {
+                'bank': '🏦 โอนธนาคาร',
+                'creditcard': '💳 บัตรเครดิต',
+                'promptpay': '📱 PromptPay'
+            };
+            return methods[method] || method;
+        }
+
+        function updateStats(orders) {
+            const totalOrders = orders.length;
+            const pendingOrders = orders.filter(o => o.status === 'pending').length;
+            const completedOrders = orders.filter(o => o.status === 'completed').length;
+            const totalRevenue = orders.reduce((sum, o) => sum + o.total, 0);
+
+            document.getElementById('totalOrders').textContent = totalOrders;
+            document.getElementById('pendingOrders').textContent = pendingOrders;
+            document.getElementById('completedOrders').textContent = completedOrders;
+            document.getElementById('totalRevenue').textContent = `฿${totalRevenue.toLocaleString('th-TH')}`;
+        }
+
+        function viewOrder(orderId) {
+            const orders = JSON.parse(localStorage.getItem('banchian-orders')) || [];
+            const order = orders.find(o => o.orderId === orderId);
+
+            if (!order) return;
+
+            let itemsHtml = '';
+            order.items.forEach(item => {
+                itemsHtml += `
+                    <div style="display: flex; justify-content: space-between; padding: 0.5rem 0;">
+                        <span>${item.name} (${item.quantity}x)</span>
+                        <span>฿${(item.price * item.quantity).toLocaleString('th-TH')}</span>
+                    </div>
+                `;
+            });
+
+            const detailsHtml = `
+                <div style="background: #f9f9f9; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                    <p><strong>หมายเลขคำสั่ง:</strong> ${order.orderId}</p>
+                    <p><strong>วันที่:</strong> ${order.createdAt}</p>
+                    <p><strong>สถานะ:</strong> ${order.status === 'pending' ? '⏳ รอการชำระเงิน' : '✓ สำเร็จ'}</p>
+                </div>
+
+                <h3>👤 ข้อมูลผู้ซื้อ</h3>
+                <p>
+                    <strong>ชื่อ:</strong> ${order.customerName}<br>
+                    <strong>อีเมล:</strong> ${order.customerEmail}<br>
+                    <strong>เบอร์โทร:</strong> ${order.customerPhone}<br>
+                    <strong>ที่อยู่:</strong> ${order.customerAddress}
+                </p>
+
+                <h3>📦 รายการสินค้า</h3>
+                <div style="background: #f9f9f9; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                    ${itemsHtml}
+                    <div style="border-top: 1px solid #ddd; margin-top: 0.5rem; padding-top: 0.5rem;">
+                        <strong style="font-size: 1.1rem; color: #0099cc;">รวมทั้งหมด: ฿${order.total.toLocaleString('th-TH')}</strong>
+                    </div>
+                </div>
+
+                <h3>💳 วิธีชำระเงิน</h3>
+                <p>${getPaymentMethodLabel(order.paymentMethod)}</p>
+            `;
+
+            document.getElementById('orderDetails').innerHTML = detailsHtml;
+            document.getElementById('orderModal').classList.add('show');
+        }
+
+        function closeOrderModal() {
+            document.getElementById('orderModal').classList.remove('show');
+        }
+
+        function completeOrder(orderId) {
+            const orders = JSON.parse(localStorage.getItem('banchian-orders')) || [];
+            const order = orders.find(o => o.orderId === orderId);
+
+            if (order) {
+                order.status = 'completed';
+                localStorage.setItem('banchian-orders', JSON.stringify(orders));
+                loadOrders();
+                alert('✓ อัปเดตสถานะสำเร็จ!');
+            }
+        }
+
+        function deleteOrder(orderId) {
+            if (!confirm('คุณแน่ใจหรือ? ต้องการลบคำสั่งนี้?')) return;
+
+            let orders = JSON.parse(localStorage.getItem('banchian-orders')) || [];
+            orders = orders.filter(o => o.orderId !== orderId);
+            localStorage.setItem('banchian-orders', JSON.stringify(orders));
+            loadOrders();
+            alert('✓ ลบสำเร็จ!');
+        }
+
+        // Load orders on page load
+        window.addEventListener('DOMContentLoaded', loadOrders);
+
+        // Refresh every 5 seconds
+        setInterval(loadOrders, 5000);
+    </script>
+</body>
+</html>
